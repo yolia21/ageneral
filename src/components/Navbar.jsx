@@ -61,7 +61,7 @@ export default function Navbar({ onOpenBooking }) {
           {/* Desktop Nav Links */}
           <ul className="nav-links">
             <li><a href="#services">Services</a></li>
-            <li><a href="#calculator">Instant Quote</a></li>
+            <li><a href="#our-services">Our Process</a></li>
             <li><a href="#team">Our Team</a></li>
             <li><a href="#reviews">Reviews (4.4★)</a></li>
             <li><a href="#service-area">Service Area</a></li>
@@ -100,7 +100,7 @@ export default function Navbar({ onOpenBooking }) {
           <div className="mobile-drawer">
             <ul className="mobile-nav-links">
               <li><a href="#services" onClick={() => setMobileMenuOpen(false)}>Services</a></li>
-              <li><a href="#calculator" onClick={() => setMobileMenuOpen(false)}>Instant Quote</a></li>
+              <li><a href="#our-services" onClick={() => setMobileMenuOpen(false)}>Our Process</a></li>
               <li><a href="#team" onClick={() => setMobileMenuOpen(false)}>Our Team (Alfie, Jay, Tim...)</a></li>
               <li><a href="#reviews" onClick={() => setMobileMenuOpen(false)}>Customer Reviews (4.4★)</a></li>
               <li><a href="#service-area" onClick={() => setMobileMenuOpen(false)}>Service Area (07747)</a></li>

@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import EmergencyBanner from './components/EmergencyBanner';
 import ServicesSection from './components/ServicesSection';
-import EstimateCalculator from './components/EstimateCalculator';
+import ServiceSolutions from './components/ServiceSolutions';
 import TeamSection from './components/TeamSection';
 import ReviewsSection from './components/ReviewsSection';
 import ServiceAreaChecker from './components/ServiceAreaChecker';
@@ -39,7 +39,7 @@ export default function App() {
         <Hero onOpenBooking={() => handleOpenBooking()} />
         <EmergencyBanner />
         <ServicesSection onOpenBooking={handleOpenBooking} />
-        <EstimateCalculator onOpenBooking={handleOpenBooking} />
+        <ServiceSolutions onOpenBooking={handleOpenBooking} />
         <TeamSection />
         <ReviewsSection />
         <ServiceAreaChecker onOpenBooking={handleOpenBooking} />
