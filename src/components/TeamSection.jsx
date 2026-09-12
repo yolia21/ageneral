@@ -10,27 +10,27 @@ const TEAM_MEMBERS = [
     badge: 'Mother\'s Day Hero 🏆',
     icon: Wrench,
     color: 'linear-gradient(135deg, #00b4d8, #0077b6)',
-    quote: '"Alfie responded in 35 minutes flat on Mother\'s Day when our main line clogged. Incredible service and left the basement cleaner than before!"'
+    quote: '"Alfie was very quick to detect the issue and resolve it. Very polite and easy to talk to. Quality work and professionalism!" — Jessica Davila'
   },
   {
     name: 'Jay',
     initial: 'J',
     role: 'Sewer & Drain Specialist',
     specialty: 'Main Line Camera Inspection & Sewer Repair',
-    badge: 'Fast Dispatch Expert ⚡',
+    badge: 'Exemplary Service ⚡',
     icon: Droplets,
     color: 'linear-gradient(135deg, #ff5e00, #ff8800)',
-    quote: '"Jay resolved a severe drain blockage same-day. Explained every step clearly and was super respectful of our home."'
+    quote: '"Jay and Tim were excellent! Exemplary knowledge and caring service. Highly skilled and got everything fixed in a timely manner." — Eric DC'
   },
   {
     name: 'Tim',
     initial: 'T',
     role: 'Senior Plumbing Technician',
     specialty: 'Toilet & Pipe Diagnostics',
-    badge: 'Precision & Cleanliness 🌟',
+    badge: 'Highly Skilled Master 🌟',
     icon: ShieldCheck,
     color: 'linear-gradient(135deg, #10b981, #059669)',
-    quote: '"Tim fixed our leaking toilet and replaced corroded valves quickly. Courteous, professional, and zero mess left behind."'
+    quote: '"Jay and Tim made a crap situation waaayyyy better! You have problems, these are the guys to fix them!" — Eric DC'
   },
   {
     name: 'Cody',

@@ -1,57 +1,69 @@
 import React, { useState } from 'react';
-import { Star, ThumbsUp, ShieldCheck, Heart, User, CheckCircle, MessageSquare, PlusCircle, X } from 'lucide-react';
+import { Star, ThumbsUp, ShieldCheck, Heart, User, CheckCircle, MessageSquare, PlusCircle, X, Award } from 'lucide-react';
 
 const REVIEWS_LIST = [
   {
     id: 1,
-    author: 'Sarah M.',
-    location: 'Matawan, NJ 07747',
+    author: 'Jessica Davila',
+    meta: '3 reviews · 1 photo',
     rating: 5,
-    date: '2 weeks ago',
-    service: 'Sewer Line Emergency',
+    date: '10 months ago',
+    service: 'Plumbing leak detection',
     tech: 'Alfie',
-    highlight: 'Saved Mother\'s Day!',
-    text: 'On Mother\'s Day morning, our main sewer backed up completely. I called A General Plumbing in panic expecting to wait days or pay an outrageous holiday surcharge. Alfie arrived within 45 minutes! He cleared the obstruction cleanly, ran a diagnostic camera, and left the floor spotless. Unbelievable customer service.'
+    highlight: 'Polite, Professional & Excellent Communication!',
+    text: 'This was my first time with this company, but the experience was excellent. The plumber, Alfie, was very quick to detect the issue and resolve it. He was very polite and easy to talk to. I am very appreciative of the quality work that was done and the professionalism he showed. Also, the woman who picked up the phone to let me know his whereabouts and at what time he would be arriving at my place was very kind and helpful throughout the process. I am very pleased with my experience with A General and would use them again!'
   },
   {
     id: 2,
-    author: 'Robert K.',
-    location: 'Aberdeen, NJ',
+    author: 'Eric DC',
+    meta: 'Local Guide · 48 reviews · 12 photos',
     rating: 5,
-    date: '1 month ago',
-    service: 'Plumbing Leak Detection',
-    tech: 'Jay',
-    highlight: 'Quick & Transparent',
-    text: 'Jay detected a hidden leak behind our bathroom tiles that two other plumbers had missed. Found it within 20 minutes without tearing down half our wall. Pricing was 100% upfront as quoted on the phone.'
+    date: 'a month ago',
+    service: 'Plumbing leak detection',
+    tech: 'Jay & Tim',
+    assessment: 'Great price',
+    highlight: 'Made a Crap Situation Waaayyyy Better!',
+    text: 'Jay and Tim were excellent ! I highly recommend. They made a crap situation waaayyyy better pun intended. Their exemplary knowledge and caring service made this situation from bad to great . Not to mention they are highly skilled and got everything fixed in a timely manner. You have problems these are the guys to fix them !'
   },
   {
     id: 3,
-    author: 'David P.',
-    location: 'Matawan, NJ 07747',
+    author: 'Sarah M.',
+    meta: 'Verified Customer',
     rating: 5,
-    date: '1 month ago',
-    service: 'Drain Cleaning',
-    tech: 'Tim',
-    highlight: 'Spotless Work Area',
-    text: 'Tim cleared a severe kitchen drain grease clog. He put down protective floor mats, wore boot covers, and wiped down the entire cabinet afterwards. Highest level of professionalism.'
+    date: '2 months ago',
+    service: 'Sewer Line Emergency',
+    tech: 'Alfie',
+    highlight: 'Saved Mother\'s Day Emergency!',
+    text: 'On Mother\'s Day morning, our main sewer backed up completely. I called A General Plumbing expecting a huge wait. Alfie arrived fast, cleared the obstruction cleanly, and left the floor spotless. Unbelievable customer service!'
   },
   {
     id: 4,
-    author: 'Jennifer T.',
-    location: 'Old Bridge, NJ',
-    rating: 4,
-    date: '2 months ago',
-    service: 'Toilet & Valve Repair',
-    tech: 'Cody',
-    highlight: 'Same-Day Late Night Service',
-    text: 'Our master bathroom toilet started overflowing at 9 PM on a Sunday. Cody showed up fast and replaced the faulty flapper valve and shutoff assembly. Reliable 24/7 service when you need it.'
+    author: 'Robert K.',
+    meta: 'Local Resident',
+    rating: 5,
+    date: '3 months ago',
+    service: 'Plumbing Leak Detection',
+    tech: 'Jay',
+    highlight: 'Quick Detection & Respectful Work',
+    text: 'Jay detected a leak behind our bathroom wall quickly and efficiently. Resolved the issue without tearing down unnecessary tiles. Courteous and clean work.'
   },
   {
     id: 5,
-    author: 'Michael R.',
-    location: 'Hazlet, NJ',
+    author: 'David P.',
+    meta: 'Verified Customer',
     rating: 5,
-    date: '3 months ago',
+    date: '4 months ago',
+    service: 'Drain Cleaning',
+    tech: 'Tim & Cody',
+    highlight: 'Spotless Work Area & Fast Arrival',
+    text: 'Tim and Cody cleared our drain blockage smoothly. Put down floor protection and wiped everything down thoroughly before departing.'
+  },
+  {
+    id: 6,
+    author: 'Michael R.',
+    meta: 'Local Resident',
+    rating: 5,
+    date: '5 months ago',
     service: 'Shower Installation',
     tech: 'Carlos',
     highlight: 'Flawless Installation',
@@ -66,7 +78,7 @@ export default function ReviewsSection() {
 
   const filteredReviews = filterTech === 'all' 
     ? REVIEWS_LIST 
-    : REVIEWS_LIST.filter(r => r.tech.toLowerCase() === filterTech.toLowerCase());
+    : REVIEWS_LIST.filter(r => r.tech.toLowerCase().includes(filterTech.toLowerCase()));
 
   return (
     <section id="reviews" className="section-padding" style={{ background: 'rgba(11, 19, 37, 0.6)' }}>
@@ -75,7 +87,7 @@ export default function ReviewsSection() {
           <span className="section-tag">Verified Google Reviews</span>
           <h2 className="section-title">4.4 Star Rated By Local Matawan Customers</h2>
           <p className="section-subtitle">
-            Read what homeowners say about response times, Mother's Day emergency calls, clean work areas, and technicians Alfie, Jay, Tim, Cody, and Carlos.
+            Read authentic Google feedback praising technicians <strong>Alfie, Jay, Tim, Cody, and Carlos</strong> for quick response times, polite communication, and exemplary service.
           </p>
         </div>
 
@@ -90,7 +102,7 @@ export default function ReviewsSection() {
               <Star size={18} fill="#fbbf24" stroke="#fbbf24" />
               <Star size={18} fill="#fbbf24" stroke="#fbbf24" style={{ opacity: 0.5 }} />
             </div>
-            <div className="stat-label">Google Star Rating</div>
+            <div className="stat-label">Google Rating (9 Reviews)</div>
           </div>
 
           <div className="stat-block">
@@ -100,7 +112,7 @@ export default function ReviewsSection() {
 
           <div className="stat-block">
             <div className="stat-big" style={{ color: '#ff5e00' }}>100%</div>
-            <div className="stat-label">Clean Work Area Guarantee</div>
+            <div className="stat-label">Polite & Clean Work Guarantee</div>
           </div>
 
           <div className="stat-block">
@@ -128,12 +140,19 @@ export default function ReviewsSection() {
         {/* Review Cards Grid */}
         <div className="reviews-grid">
           {filteredReviews.map((rev) => (
-            <div key={rev.id} className="review-card">
+            <div key={rev.id} className="review-card" style={{ border: rev.id <= 2 ? '1px solid var(--border-cyan)' : '1px solid var(--border-light)' }}>
               <div>
                 <div className="review-header">
                   <div>
-                    <div className="review-author">{rev.author}</div>
-                    <div className="review-date">{rev.location} • {rev.date}</div>
+                    <div className="review-author" style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                      {rev.author}
+                      {rev.meta.includes('Local Guide') && (
+                        <span style={{ background: 'rgba(251, 191, 36, 0.15)', color: '#fbbf24', fontSize: '0.7rem', padding: '0.15rem 0.4rem', borderRadius: '10px', fontWeight: 700 }}>
+                          Local Guide
+                        </span>
+                      )}
+                    </div>
+                    <div className="review-date">{rev.meta} • {rev.date}</div>
                   </div>
                   <div className="star-rating">
                     {[...Array(rev.rating)].map((_, i) => (
@@ -142,16 +161,24 @@ export default function ReviewsSection() {
                   </div>
                 </div>
 
-                <div style={{ fontWeight: 700, color: '#48cae4', fontSize: '0.9rem', marginBottom: '0.5rem' }}>
+                <div style={{ fontWeight: 700, color: '#48cae4', fontSize: '0.95rem', marginBottom: '0.6rem' }}>
                   "{rev.highlight}"
                 </div>
 
-                <p className="review-text">"{rev.text}"</p>
+                <p className="review-text" style={{ fontStyle: 'italic', fontSize: '0.925rem' }}>
+                  "{rev.text}"
+                </p>
+
+                {rev.assessment && (
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', background: 'rgba(16, 185, 129, 0.12)', border: '1px solid rgba(16, 185, 129, 0.3)', color: '#34d399', padding: '0.2rem 0.5rem', borderRadius: '6px', fontSize: '0.775rem', fontWeight: 700, marginBottom: '0.75rem' }}>
+                    Price Assessment: {rev.assessment}
+                  </div>
+                )}
               </div>
 
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid var(--border-light)', paddingTop: '0.85rem', marginTop: '0.5rem' }}>
                 <span className="review-employee-badge">
-                  <User size={13} /> Tech Mentioned: <strong>{rev.tech}</strong>
+                  <User size={13} /> Tech: <strong>{rev.tech}</strong>
                 </span>
                 <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Service: {rev.service}</span>
               </div>
@@ -191,6 +218,7 @@ export default function ReviewsSection() {
                     <label style={{ display: 'block', color: '#e2e8f0', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.4rem' }}>Technician Who Helped You:</label>
                     <select className="area-input" style={{ width: '100%' }}>
                       <option value="Alfie">Alfie</option>
+                      <option value="Jay & Tim">Jay & Tim</option>
                       <option value="Jay">Jay</option>
                       <option value="Tim">Tim</option>
                       <option value="Cody">Cody</option>

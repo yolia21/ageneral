@@ -52,7 +52,7 @@ export default function Hero({ onOpenBooking }) {
               </div>
               <div className="guarantee-item">
                 <CheckCircle2 size={18} className="guarantee-icon" />
-                <span>Upfront Flat-Rate Pricing</span>
+                <span>Upfront Communication Guarantee</span>
               </div>
             </div>
           </div>

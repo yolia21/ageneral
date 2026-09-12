@@ -9,14 +9,13 @@ const SERVICES_DATA = [
     urgency: 'High Urgency',
     shortDesc: 'Non-invasive acoustic and thermal detection to locate hidden pipe leaks inside walls, slabs, and ceilings before water damage spreads.',
     tags: ['Acoustic Sensor', 'Thermal Imaging', 'Slab Leaks', 'Hidden Water Damage'],
-    priceEstimate: '$149 - $299',
     symptoms: [
       'Unexplained spike in monthly water bill',
       'Damp carpet, ceiling discoloration, or warm floor spots',
       'Musty odor or mold growth around baseboards',
       'Constant sound of running water when taps are closed'
     ],
-    techLead: 'Alfie & Tim'
+    techLead: 'Alfie, Jay & Tim'
   },
   {
     id: 'drain-cleaning',
@@ -25,7 +24,6 @@ const SERVICES_DATA = [
     urgency: 'Medium - High',
     shortDesc: 'Heavy-duty drain augers and high-pressure water jetting to clear stubborn grease, hair, scale, and root blockages rapidly.',
     tags: ['Hydro Jetting', 'Clogged Sink', 'Main Line Cleanout', 'Camera Inspection'],
-    priceEstimate: '$99 - $249',
     symptoms: [
       'Slow draining sinks, bathtubs, or laundry tubs',
       'Gurgling noises coming from bathroom drains',
@@ -41,7 +39,6 @@ const SERVICES_DATA = [
     urgency: 'Critical Emergency',
     shortDesc: 'Complete sewer main line diagnostics, spot repairs, pipe lining, and full line replacements with video camera verification.',
     tags: ['Tree Root Intrusion', 'Trenchless Repair', 'Sewer Line Camera', 'Collapse Fix'],
-    priceEstimate: '$350 - $1,200+',
     symptoms: [
       'Multiple plumbing fixtures backing up simultaneously',
       'Soggy or lush green spots appearing in your lawn',
@@ -57,7 +54,6 @@ const SERVICES_DATA = [
     urgency: 'Standard - High',
     shortDesc: 'Fix running toilets, weak flushes, phantom fills, leaking wax rings, or install modern water-saving high-efficiency toilets.',
     tags: ['Wax Ring Seal', 'Flapper & Valve', 'Running Toilet', 'High-Efficiency Upgrade'],
-    priceEstimate: '$89 - $220',
     symptoms: [
       'Toilet continuously runs water day and night',
       'Water pooling around the porcelain base',
@@ -73,7 +69,6 @@ const SERVICES_DATA = [
     urgency: 'Standard Scheduled',
     shortDesc: 'Professional valve plumbing, custom shower pan installation, tub-to-shower conversions, and pressure-balanced fixture fitments.',
     tags: ['Custom Shower', 'Pressure-Balance Valve', 'Tub Conversion', 'Fixture Fitting'],
-    priceEstimate: '$299 - $850+',
     symptoms: [
       'Leaking valve causing water damage behind shower wall',
       'Fluctuating water temperatures when someone flushes',
@@ -118,7 +113,7 @@ export default function ServicesSection({ onOpenBooking }) {
 
                 <div className="service-footer">
                   <div className="service-price-tag">
-                    Est: <span className="service-price-amount">{srv.priceEstimate}</span>
+                    Quote: <span className="service-price-amount" style={{ fontSize: '0.95rem' }}>Upfront Assessment</span>
                   </div>
                   
                   <button 
@@ -170,8 +165,8 @@ export default function ServicesSection({ onOpenBooking }) {
 
             <div style={{ background: 'rgba(11,19,37,0.7)', padding: '1rem', borderRadius: '12px', marginBottom: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <div>
-                <div style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Transparent Estimate Range</div>
-                <div style={{ fontSize: '1.3rem', fontWeight: 800, color: '#48cae4' }}>{selectedService.priceEstimate}</div>
+                <div style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Transparent Service Quote</div>
+                <div style={{ fontSize: '1.1rem', fontWeight: 800, color: '#48cae4' }}>Upfront Evaluation & Fast Dispatch</div>
               </div>
               <a href="tel:7325665000" className="btn btn-primary btn-sm">
                 <Phone size={16} /> (732) 566-5000

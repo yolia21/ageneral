@@ -34,7 +34,7 @@ export default function FAQSection() {
           <span className="section-tag">Got Questions?</span>
           <h2 className="section-title">Frequently Asked Questions</h2>
           <p className="section-subtitle">
-            Everything you need to know about our 24/7 service, pricing, and Matawan response team.
+            Everything you need to know about our 24/7 service, team, and Matawan dispatch.
           </p>
         </div>
 
