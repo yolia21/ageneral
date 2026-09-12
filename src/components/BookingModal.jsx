@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Calendar, Phone, Clock, AlertTriangle, CheckCircle, Upload, ShieldCheck, MapPin } from 'lucide-react';
+import { X, Calendar, Phone, Clock, AlertTriangle, CheckCircle, Upload, ShieldCheck, MapPin, Send } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export default function BookingModal({ isOpen, onClose, defaultService = '' }) {
@@ -18,12 +18,11 @@ export default function BookingModal({ isOpen, onClose, defaultService = '' }) {
   if (!isOpen) return null;
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    // FormSubmit POST request can submit directly or via AJAX/Form action
     const generatedTicket = 'AGP-' + Math.floor(100000 + Math.random() * 900000);
     setTicketNo(generatedTicket);
     setSubmitted(true);
 
-    // Trigger confetti animation celebration
     try {
       confetti({
         particleCount: 80,
@@ -59,11 +58,21 @@ export default function BookingModal({ isOpen, onClose, defaultService = '' }) {
             <h3 style={{ fontSize: '1.6rem', color: '#ffffff', marginBottom: '0.25rem' }}>
               Request Plumbing Dispatch
             </h3>
-            <p style={{ color: '#94a3b8', fontSize: '0.9rem', marginBottom: '1.5rem' }}>
-              Direct line to A General Plumbing & Sewer Services at 125 Main St, Matawan, NJ.
+            <p style={{ color: '#94a3b8', fontSize: '0.9rem', marginBottom: '1.25rem' }}>
+              Submissions sent directly to <strong>yusufolia21@gmail.com</strong> via FormSubmit.
             </p>
 
-            <form onSubmit={handleSubmit}>
+            <form 
+              action="https://formsubmit.co/yusufolia21@gmail.com" 
+              method="POST" 
+              onSubmit={handleSubmit}
+            >
+              {/* FormSubmit Configuration Fields */}
+              <input type="hidden" name="_subject" value={`New 24/7 Plumbing Dispatch Request - ${formData.service}`} />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="priority_status" value={formData.isEmergency ? 'URGENT 24/7 PRIORITY DISPATCH' : 'Scheduled Appointment'} />
+
               {/* Emergency toggle */}
               <div 
                 style={{ 
@@ -105,6 +114,7 @@ export default function BookingModal({ isOpen, onClose, defaultService = '' }) {
                   </label>
                   <input 
                     type="text" 
+                    name="customer_name"
                     required 
                     className="area-input" 
                     placeholder="e.g. Michael Smith"
@@ -120,6 +130,7 @@ export default function BookingModal({ isOpen, onClose, defaultService = '' }) {
                   </label>
                   <input 
                     type="tel" 
+                    name="phone_number"
                     required 
                     className="area-input" 
                     placeholder="(732) 000-0000"
@@ -137,6 +148,7 @@ export default function BookingModal({ isOpen, onClose, defaultService = '' }) {
                 <div style={{ position: 'relative' }}>
                   <input 
                     type="text" 
+                    name="property_address"
                     required 
                     className="area-input" 
                     placeholder="Street Address, City, ZIP"
@@ -153,6 +165,7 @@ export default function BookingModal({ isOpen, onClose, defaultService = '' }) {
                   Primary Service Needed *
                 </label>
                 <select 
+                  name="service_type"
                   className="area-input"
                   value={formData.service}
                   onChange={(e) => setFormData({ ...formData, service: e.target.value })}
@@ -172,6 +185,7 @@ export default function BookingModal({ isOpen, onClose, defaultService = '' }) {
                   Issue Notes / Special Requests (Optional):
                 </label>
                 <textarea 
+                  name="issue_notes"
                   className="area-input"
                   rows={2}
                   placeholder="e.g. Water dripping under kitchen sink, or request technician Alfie/Jay if available..."
@@ -183,7 +197,7 @@ export default function BookingModal({ isOpen, onClose, defaultService = '' }) {
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                 <button type="submit" className="btn btn-primary btn-lg" style={{ width: '100%' }}>
-                  Submit Dispatch Request
+                  <Send size={18} /> Submit Request To Email
                 </button>
                 <div style={{ textAlign: 'center', fontSize: '0.8rem', color: '#94a3b8' }}>
                   Need immediate phone confirmation? Call <a href="tel:7325665000" style={{ color: '#00b4d8', fontWeight: 700 }}>(732) 566-5000</a>
@@ -200,18 +214,18 @@ export default function BookingModal({ isOpen, onClose, defaultService = '' }) {
             </div>
 
             <h3 style={{ fontSize: '1.8rem', color: '#ffffff', marginBottom: '0.5rem' }}>
-              Dispatch Confirmed!
+              Dispatch Submitted!
             </h3>
 
             <p style={{ color: '#cbd5e1', fontSize: '1rem', maxWidth: '480px', margin: '0 auto 1.5rem auto' }}>
-              Thank you, <strong>{formData.name}</strong>. Our on-duty dispatcher at 125 Main St, Matawan is reviewing your request for <strong>{formData.service}</strong>.
+              Thank you, <strong>{formData.name}</strong>. Your request has been sent to <strong>yusufolia21@gmail.com</strong> via FormSubmit. Our dispatcher at 125 Main St, Matawan will contact you immediately.
             </p>
 
             <div style={{ background: 'rgba(11,19,37,0.8)', border: '1px solid var(--border-cyan)', padding: '1.25rem', borderRadius: '12px', textAlign: 'left', marginBottom: '1.75rem' }}>
-              <div style={{ fontSize: '0.85rem', color: '#94a3b8', marginBottom: '0.5rem' }}>Dispatch Details:</div>
+              <div style={{ fontSize: '0.85rem', color: '#94a3b8', marginBottom: '0.5rem' }}>Submission Details:</div>
               <div style={{ fontSize: '0.95rem', color: '#ffffff', fontWeight: 600 }}>📍 Location: {formData.address}</div>
               <div style={{ fontSize: '0.95rem', color: '#ffffff', fontWeight: 600, marginTop: '0.25rem' }}>📞 Phone: {formData.phone}</div>
-              <div style={{ fontSize: '0.95rem', color: '#48cae4', fontWeight: 600, marginTop: '0.25rem' }}>⏱️ Status: {formData.isEmergency ? 'Urgent 24/7 Priority Active' : 'Scheduled Request Received'}</div>
+              <div style={{ fontSize: '0.95rem', color: '#48cae4', fontWeight: 600, marginTop: '0.25rem' }}>📧 Sent To: yusufolia21@gmail.com</div>
             </div>
 
             <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center' }}>

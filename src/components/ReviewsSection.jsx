@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Star, ThumbsUp, ShieldCheck, Heart, User, CheckCircle, MessageSquare, PlusCircle, X, Award } from 'lucide-react';
+import { Star, ThumbsUp, ShieldCheck, Heart, User, CheckCircle, MessageSquare, PlusCircle, X, Award, Send } from 'lucide-react';
 
 const REVIEWS_LIST = [
   {
@@ -125,7 +125,7 @@ export default function ReviewsSection() {
         </div>
 
         {/* Filter Bar */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', justifyContent: 'center', marginBottom: '2rem' }}>
           <span style={{ fontSize: '0.875rem', color: '#94a3b8', fontWeight: 600 }}>Filter by Tech:</span>
           {['all', 'Alfie', 'Jay', 'Tim', 'Cody', 'Carlos'].map((t) => (
             <button
@@ -217,18 +217,26 @@ export default function ReviewsSection() {
                   Leave a Customer Review
                 </h3>
                 <p style={{ color: '#94a3b8', fontSize: '0.9rem', marginBottom: '1.5rem' }}>
-                  Share your experience with A General Plumbing & Sewer Services in Matawan, NJ.
+                  Submissions sent directly to <strong>yusufolia21@gmail.com</strong> via FormSubmit.
                 </p>
 
-                <form onSubmit={(e) => { e.preventDefault(); setSubmittedReview(true); }}>
+                <form 
+                  action="https://formsubmit.co/yusufolia21@gmail.com" 
+                  method="POST" 
+                  onSubmit={() => setSubmittedReview(true)}
+                >
+                  <input type="hidden" name="_subject" value="New Website Review Submission - A General Plumbing" />
+                  <input type="hidden" name="_captcha" value="false" />
+                  <input type="hidden" name="_template" value="table" />
+
                   <div style={{ marginBottom: '1rem' }}>
                     <label style={{ display: 'block', color: '#e2e8f0', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.4rem' }}>Your Name:</label>
-                    <input className="area-input" required placeholder="e.g. John D." style={{ width: '100%' }} />
+                    <input className="area-input" name="reviewer_name" required placeholder="e.g. John D." style={{ width: '100%' }} />
                   </div>
 
                   <div style={{ marginBottom: '1rem' }}>
                     <label style={{ display: 'block', color: '#e2e8f0', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.4rem' }}>Technician Who Helped You:</label>
-                    <select className="area-input" style={{ width: '100%' }}>
+                    <select className="area-input" name="technician_helped" style={{ width: '100%' }}>
                       <option value="Alfie">Alfie</option>
                       <option value="Jay & Tim">Jay & Tim</option>
                       <option value="Cody">Cody</option>
@@ -243,15 +251,16 @@ export default function ReviewsSection() {
                         <Star key={s} size={24} fill="#fbbf24" stroke="#fbbf24" style={{ cursor: 'pointer' }} />
                       ))}
                     </div>
+                    <input type="hidden" name="star_rating" value="5 Stars" />
                   </div>
 
                   <div style={{ marginBottom: '1.5rem' }}>
                     <label style={{ display: 'block', color: '#e2e8f0', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.4rem' }}>Your Feedback:</label>
-                    <textarea className="area-input" rows={3} required placeholder="Describe response time, cleanliness, and service quality..." style={{ width: '100%', resize: 'none' }}></textarea>
+                    <textarea className="area-input" name="review_comments" rows={3} required placeholder="Describe response time, cleanliness, and service quality..." style={{ width: '100%', resize: 'none' }}></textarea>
                   </div>
 
                   <button type="submit" className="btn btn-primary btn-lg" style={{ width: '100%' }}>
-                    Submit Google Review
+                    <Send size={18} /> Submit Review To Email
                   </button>
                 </form>
               </div>
@@ -259,7 +268,7 @@ export default function ReviewsSection() {
               <div style={{ textAlign: 'center', padding: '1rem 0' }}>
                 <CheckCircle size={56} style={{ color: '#10b981', margin: '0 auto 1rem auto' }} />
                 <h3 style={{ fontSize: '1.5rem', color: '#ffffff', marginBottom: '0.5rem' }}>Thank You for Your Feedback!</h3>
-                <p style={{ color: '#cbd5e1', marginBottom: '1.5rem' }}>Your review helps us maintain our standard in Matawan, NJ.</p>
+                <p style={{ color: '#cbd5e1', marginBottom: '1.5rem' }}>Your review has been sent to <strong>yusufolia21@gmail.com</strong>.</p>
                 <button onClick={() => { setReviewModalOpen(false); setSubmittedReview(false); }} className="btn btn-secondary">
                   Close Window
                 </button>
