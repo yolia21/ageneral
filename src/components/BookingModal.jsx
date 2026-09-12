@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Calendar, Phone, Clock, AlertTriangle, CheckCircle, Upload, ShieldCheck, MapPin, Send } from 'lucide-react';
+import { X, Calendar, Phone, Clock, AlertTriangle, CheckCircle, Upload, ShieldCheck, MapPin, Send, Loader2 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export default function BookingModal({ isOpen, onClose, defaultService = '' }) {
@@ -12,15 +12,44 @@ export default function BookingModal({ isOpen, onClose, defaultService = '' }) {
     notes: ''
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [ticketNo, setTicketNo] = useState('');
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e) => {
-    // FormSubmit POST request can submit directly or via AJAX/Form action
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const payload = {
+      _subject: `New 24/7 Plumbing Dispatch Request - ${formData.service}`,
+      _captcha: 'false',
+      _template: 'table',
+      customer_name: formData.name,
+      phone_number: formData.phone,
+      property_address: formData.address,
+      service_type: formData.service,
+      priority_status: formData.isEmergency ? 'URGENT 24/7 PRIORITY DISPATCH' : 'Scheduled Appointment',
+      issue_notes: formData.notes || 'None provided'
+    };
+
+    try {
+      await fetch('https://formsubmit.co/ajax/yusufolia21@gmail.com', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+    } catch (err) {
+      console.error('FormSubmit Error:', err);
+    }
+
     const generatedTicket = 'AGP-' + Math.floor(100000 + Math.random() * 900000);
     setTicketNo(generatedTicket);
+    setIsSubmitting(false);
     setSubmitted(true);
 
     try {
@@ -59,20 +88,10 @@ export default function BookingModal({ isOpen, onClose, defaultService = '' }) {
               Request Plumbing Dispatch
             </h3>
             <p style={{ color: '#94a3b8', fontSize: '0.9rem', marginBottom: '1.25rem' }}>
-              Submissions sent directly to <strong>yusufolia21@gmail.com</strong> via FormSubmit.
+              Submissions sent directly to <strong>yusufolia21@gmail.com</strong>.
             </p>
 
-            <form 
-              action="https://formsubmit.co/yusufolia21@gmail.com" 
-              method="POST" 
-              onSubmit={handleSubmit}
-            >
-              {/* FormSubmit Configuration Fields */}
-              <input type="hidden" name="_subject" value={`New 24/7 Plumbing Dispatch Request - ${formData.service}`} />
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_template" value="table" />
-              <input type="hidden" name="priority_status" value={formData.isEmergency ? 'URGENT 24/7 PRIORITY DISPATCH' : 'Scheduled Appointment'} />
-
+            <form onSubmit={handleSubmit}>
               {/* Emergency toggle */}
               <div 
                 style={{ 
@@ -114,7 +133,6 @@ export default function BookingModal({ isOpen, onClose, defaultService = '' }) {
                   </label>
                   <input 
                     type="text" 
-                    name="customer_name"
                     required 
                     className="area-input" 
                     placeholder="e.g. Michael Smith"
@@ -130,7 +148,6 @@ export default function BookingModal({ isOpen, onClose, defaultService = '' }) {
                   </label>
                   <input 
                     type="tel" 
-                    name="phone_number"
                     required 
                     className="area-input" 
                     placeholder="(732) 000-0000"
@@ -148,7 +165,6 @@ export default function BookingModal({ isOpen, onClose, defaultService = '' }) {
                 <div style={{ position: 'relative' }}>
                   <input 
                     type="text" 
-                    name="property_address"
                     required 
                     className="area-input" 
                     placeholder="Street Address, City, ZIP"
@@ -165,7 +181,6 @@ export default function BookingModal({ isOpen, onClose, defaultService = '' }) {
                   Primary Service Needed *
                 </label>
                 <select 
-                  name="service_type"
                   className="area-input"
                   value={formData.service}
                   onChange={(e) => setFormData({ ...formData, service: e.target.value })}
@@ -185,7 +200,6 @@ export default function BookingModal({ isOpen, onClose, defaultService = '' }) {
                   Issue Notes / Special Requests (Optional):
                 </label>
                 <textarea 
-                  name="issue_notes"
                   className="area-input"
                   rows={2}
                   placeholder="e.g. Water dripping under kitchen sink, or request technician Alfie/Jay if available..."
@@ -196,8 +210,16 @@ export default function BookingModal({ isOpen, onClose, defaultService = '' }) {
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                <button type="submit" className="btn btn-primary btn-lg" style={{ width: '100%' }}>
-                  <Send size={18} /> Submit Request To Email
+                <button type="submit" disabled={isSubmitting} className="btn btn-primary btn-lg" style={{ width: '100%' }}>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 size={18} className="spin-icon" /> Sending Request to Email...
+                    </>
+                  ) : (
+                    <>
+                      <Send size={18} /> Submit Request To Email
+                    </>
+                  )}
                 </button>
                 <div style={{ textAlign: 'center', fontSize: '0.8rem', color: '#94a3b8' }}>
                   Need immediate phone confirmation? Call <a href="tel:7325665000" style={{ color: '#00b4d8', fontWeight: 700 }}>(732) 566-5000</a>

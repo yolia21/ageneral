@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Star, ThumbsUp, ShieldCheck, Heart, User, CheckCircle, MessageSquare, PlusCircle, X, Award, Send } from 'lucide-react';
+import { Star, ThumbsUp, ShieldCheck, Heart, User, CheckCircle, MessageSquare, PlusCircle, X, Award, Send, Loader2 } from 'lucide-react';
 
 const REVIEWS_LIST = [
   {
@@ -76,11 +76,48 @@ const REVIEWS_LIST = [
 export default function ReviewsSection() {
   const [filterTech, setFilterTech] = useState('all');
   const [reviewModalOpen, setReviewModalOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittedReview, setSubmittedReview] = useState(false);
+  const [reviewData, setReviewData] = useState({
+    name: '',
+    tech: 'Alfie',
+    comments: ''
+  });
 
   const filteredReviews = filterTech === 'all' 
     ? REVIEWS_LIST 
     : REVIEWS_LIST.filter(r => r.tech.toLowerCase().includes(filterTech.toLowerCase()));
+
+  const handleReviewSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const payload = {
+      _subject: 'New Website Customer Review - A General Plumbing',
+      _captcha: 'false',
+      _template: 'table',
+      reviewer_name: reviewData.name,
+      technician_helped: reviewData.tech,
+      star_rating: '5 Stars',
+      review_comments: reviewData.comments
+    };
+
+    try {
+      await fetch('https://formsubmit.co/ajax/yusufolia21@gmail.com', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+    } catch (err) {
+      console.error('FormSubmit Review Error:', err);
+    }
+
+    setIsSubmitting(false);
+    setSubmittedReview(true);
+  };
 
   return (
     <section id="reviews" className="section-padding" style={{ background: 'rgba(11, 19, 37, 0.6)' }}>
@@ -217,26 +254,30 @@ export default function ReviewsSection() {
                   Leave a Customer Review
                 </h3>
                 <p style={{ color: '#94a3b8', fontSize: '0.9rem', marginBottom: '1.5rem' }}>
-                  Submissions sent directly to <strong>yusufolia21@gmail.com</strong> via FormSubmit.
+                  Submissions sent directly to <strong>yusufolia21@gmail.com</strong>.
                 </p>
 
-                <form 
-                  action="https://formsubmit.co/yusufolia21@gmail.com" 
-                  method="POST" 
-                  onSubmit={() => setSubmittedReview(true)}
-                >
-                  <input type="hidden" name="_subject" value="New Website Review Submission - A General Plumbing" />
-                  <input type="hidden" name="_captcha" value="false" />
-                  <input type="hidden" name="_template" value="table" />
-
+                <form onSubmit={handleReviewSubmit}>
                   <div style={{ marginBottom: '1rem' }}>
                     <label style={{ display: 'block', color: '#e2e8f0', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.4rem' }}>Your Name:</label>
-                    <input className="area-input" name="reviewer_name" required placeholder="e.g. John D." style={{ width: '100%' }} />
+                    <input 
+                      className="area-input" 
+                      required 
+                      placeholder="e.g. John D." 
+                      value={reviewData.name}
+                      onChange={(e) => setReviewData({ ...reviewData, name: e.target.value })}
+                      style={{ width: '100%' }} 
+                    />
                   </div>
 
                   <div style={{ marginBottom: '1rem' }}>
                     <label style={{ display: 'block', color: '#e2e8f0', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.4rem' }}>Technician Who Helped You:</label>
-                    <select className="area-input" name="technician_helped" style={{ width: '100%' }}>
+                    <select 
+                      className="area-input" 
+                      value={reviewData.tech}
+                      onChange={(e) => setReviewData({ ...reviewData, tech: e.target.value })}
+                      style={{ width: '100%' }}
+                    >
                       <option value="Alfie">Alfie</option>
                       <option value="Jay & Tim">Jay & Tim</option>
                       <option value="Cody">Cody</option>
@@ -251,16 +292,31 @@ export default function ReviewsSection() {
                         <Star key={s} size={24} fill="#fbbf24" stroke="#fbbf24" style={{ cursor: 'pointer' }} />
                       ))}
                     </div>
-                    <input type="hidden" name="star_rating" value="5 Stars" />
                   </div>
 
                   <div style={{ marginBottom: '1.5rem' }}>
                     <label style={{ display: 'block', color: '#e2e8f0', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.4rem' }}>Your Feedback:</label>
-                    <textarea className="area-input" name="review_comments" rows={3} required placeholder="Describe response time, cleanliness, and service quality..." style={{ width: '100%', resize: 'none' }}></textarea>
+                    <textarea 
+                      className="area-input" 
+                      rows={3} 
+                      required 
+                      placeholder="Describe response time, cleanliness, and service quality..." 
+                      value={reviewData.comments}
+                      onChange={(e) => setReviewData({ ...reviewData, comments: e.target.value })}
+                      style={{ width: '100%', resize: 'none' }}
+                    ></textarea>
                   </div>
 
-                  <button type="submit" className="btn btn-primary btn-lg" style={{ width: '100%' }}>
-                    <Send size={18} /> Submit Review To Email
+                  <button type="submit" disabled={isSubmitting} className="btn btn-primary btn-lg" style={{ width: '100%' }}>
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 size={18} className="spin-icon" /> Sending Review...
+                      </>
+                    ) : (
+                      <>
+                        <Send size={18} /> Submit Review To Email
+                      </>
+                    )}
                   </button>
                 </form>
               </div>
