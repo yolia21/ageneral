@@ -5,12 +5,12 @@ const TEAM_MEMBERS = [
   {
     name: 'Alfie',
     initial: 'A',
-    role: 'Lead Master Plumber',
-    specialty: 'Leak Detection & Hydro-Jetting',
-    badge: 'Mother\'s Day Hero 🏆',
+    role: 'Master Plumber',
+    specialty: 'Plumbing Leak Detection & Resolution',
+    badge: 'Quick & Polite Specialist 🏆',
     icon: Wrench,
     color: 'linear-gradient(135deg, #00b4d8, #0077b6)',
-    quote: '"Alfie was very quick to detect the issue and resolve it. Very polite and easy to talk to. Quality work and professionalism!" — Jessica Davila'
+    quote: '"The plumber, Alfie, was very quick to detect the issue and resolve it. He was very polite and easy to talk to. Quality work and professionalism!" — Jessica Davila'
   },
   {
     name: 'Jay',
@@ -20,7 +20,7 @@ const TEAM_MEMBERS = [
     badge: 'Exemplary Service ⚡',
     icon: Droplets,
     color: 'linear-gradient(135deg, #ff5e00, #ff8800)',
-    quote: '"Jay and Tim were excellent! Exemplary knowledge and caring service. Highly skilled and got everything fixed in a timely manner." — Eric DC'
+    quote: '"Jay and Tim were excellent ! They made a crap situation waaayyyy better. Exemplary knowledge and caring service." — Eric DC'
   },
   {
     name: 'Tim',
@@ -30,27 +30,27 @@ const TEAM_MEMBERS = [
     badge: 'Highly Skilled Master 🌟',
     icon: ShieldCheck,
     color: 'linear-gradient(135deg, #10b981, #059669)',
-    quote: '"Jay and Tim made a crap situation waaayyyy better! You have problems, these are the guys to fix them!" — Eric DC'
+    quote: '"Jay and Tim are highly skilled and got everything fixed in a timely manner. You have problems these are the guys to fix them !" — Eric DC'
   },
   {
     name: 'Cody',
     initial: 'C',
-    role: 'Emergency Response Tech',
-    specialty: 'Burst Pipe & Rapid Shutoff',
-    badge: 'Same-Day Service Lead ⏱️',
+    role: 'Plumbing Technician',
+    specialty: 'Leak Repair & Spotless Cleanup',
+    badge: 'Spotlessly Clean Lead ⏱️',
     icon: Zap,
     color: 'linear-gradient(135deg, #8b5cf6, #6d28d9)',
-    quote: '"Cody arrived late at night during a major pipe emergency. Fixed the leak within an hour with total professionalism."'
+    quote: '"Cody, the plumber was courteous, professional and did a terrific job. He left the space where he worked spotlessly clean." — Irina Lendensky'
   },
   {
     name: 'Carlos',
     initial: 'C',
-    role: 'Fixture & Shower Installer',
-    specialty: 'Shower Valve Plumbing & Tub Replacement',
-    badge: 'Installation Master 🚿',
+    role: 'Drain & Fixture Specialist',
+    specialty: 'Heavy-Duty Drain Snaking & Fixture Installation',
+    badge: 'Tough Clog Specialist 🚿',
     icon: ShowerHead,
     color: 'linear-gradient(135deg, #f59e0b, #d97706)',
-    quote: '"Carlos installed our new custom shower fixtures flawlessly. High attention to detail and upfront pricing."'
+    quote: '"Carlos arrived in the afternoon and brought out a bigger snake that did the job on a tuff clog. Salute to Carlos for a good job!" — Charles Giordano'
   }
 ];
 
@@ -60,9 +60,9 @@ export default function TeamSection() {
       <div className="container">
         <div className="section-header">
           <span className="section-tag">Praise By Name In Customer Reviews</span>
-          <h2 className="section-title">Meet Our Trusted Technicians</h2>
+          <h2 className="section-title">Meet Our Technicians</h2>
           <p className="section-subtitle">
-            The real professionals behind our 4.4 Google rating. Known for quick response times, holiday availability, and immaculate clean-ups.
+            The real professionals praised in verified Google customer reviews.
           </p>
         </div>
 

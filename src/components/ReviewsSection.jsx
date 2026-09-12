@@ -10,7 +10,7 @@ const REVIEWS_LIST = [
     date: '10 months ago',
     service: 'Plumbing leak detection',
     tech: 'Alfie',
-    highlight: 'Polite, Professional & Excellent Communication!',
+    highlight: 'Very polite, quick & helpful phone support',
     text: 'This was my first time with this company, but the experience was excellent. The plumber, Alfie, was very quick to detect the issue and resolve it. He was very polite and easy to talk to. I am very appreciative of the quality work that was done and the professionalism he showed. Also, the woman who picked up the phone to let me know his whereabouts and at what time he would be arriving at my place was very kind and helpful throughout the process. I am very pleased with my experience with A General and would use them again!'
   },
   {
@@ -22,52 +22,54 @@ const REVIEWS_LIST = [
     service: 'Plumbing leak detection',
     tech: 'Jay & Tim',
     assessment: 'Great price',
-    highlight: 'Made a Crap Situation Waaayyyy Better!',
+    highlight: 'Jay and Tim made a crap situation waaayyyy better!',
     text: 'Jay and Tim were excellent ! I highly recommend. They made a crap situation waaayyyy better pun intended. Their exemplary knowledge and caring service made this situation from bad to great . Not to mention they are highly skilled and got everything fixed in a timely manner. You have problems these are the guys to fix them !'
   },
   {
     id: 3,
-    author: 'Sarah M.',
-    meta: 'Verified Customer',
+    author: 'Irina Lendensky',
+    meta: '12 reviews · 1 photo',
     rating: 5,
-    date: '2 months ago',
-    service: 'Sewer Line Emergency',
-    tech: 'Alfie',
-    highlight: 'Saved Mother\'s Day Emergency!',
-    text: 'On Mother\'s Day morning, our main sewer backed up completely. I called A General Plumbing expecting a huge wait. Alfie arrived fast, cleared the obstruction cleanly, and left the floor spotless. Unbelievable customer service!'
+    date: '5 years ago',
+    service: 'Plumbing leak detection',
+    tech: 'Cody',
+    positiveTags: ['Responsiveness', 'Professionalism', 'Value'],
+    highlight: 'Courteous, professional & spotlessly clean',
+    text: 'This was our first time using this company. Cody, the plumber was courteous, professional and did a terrific job. He left the space where he worked spotlessly clean. The price was very reasonable as well. Great experience'
   },
   {
     id: 4,
-    author: 'Robert K.',
-    meta: 'Local Resident',
+    author: 'Aleksandra Kosakowska',
+    meta: '11 reviews · 1 photo',
     rating: 5,
-    date: '3 months ago',
-    service: 'Plumbing Leak Detection',
-    tech: 'Jay',
-    highlight: 'Quick Detection & Respectful Work',
-    text: 'Jay detected a leak behind our bathroom wall quickly and efficiently. Resolved the issue without tearing down unnecessary tiles. Courteous and clean work.'
+    date: '5 years ago',
+    service: 'Drain cleaning',
+    tech: 'Emergency Dispatch',
+    positiveTags: ['Responsiveness', 'Professionalism'],
+    highlight: 'Showed up same day on Mother\'s Day!',
+    text: 'Out of 6 plumbers we called this was the only one that called back and showed up the same day on mother\'s day! We had a clog in the toilet caused by a toy and he got it out quickly and without making a mess. So greatful for such a reliable service provider ?'
   },
   {
     id: 5,
-    author: 'David P.',
-    meta: 'Verified Customer',
+    author: 'Aleks Zhdanov',
+    meta: '14 reviews',
     rating: 5,
-    date: '4 months ago',
-    service: 'Drain Cleaning',
-    tech: 'Tim & Cody',
-    highlight: 'Spotless Work Area & Fast Arrival',
-    text: 'Tim and Cody cleared our drain blockage smoothly. Put down floor protection and wiped everything down thoroughly before departing.'
+    date: '2 years ago',
+    service: 'General Plumbing',
+    tech: 'On-duty Plumber',
+    highlight: 'Went above and beyond',
+    text: 'Plumber was great there was a miscommunication over the phone about price and he still worked with us and went above and beyond.'
   },
   {
     id: 6,
-    author: 'Michael R.',
-    meta: 'Local Resident',
+    author: 'Charles Giordano',
+    meta: 'Local Guide · 19 reviews',
     rating: 5,
-    date: '5 months ago',
-    service: 'Shower Installation',
+    date: '5 years ago',
+    service: 'Drain cleaning',
     tech: 'Carlos',
-    highlight: 'Flawless Installation',
-    text: 'Carlos installed a new pressure-balanced shower valve system in our guest bath. Worked fast, tested every setting, and was very friendly. Highly recommended!'
+    highlight: 'Salute to Carlos for a good job on a tough clog!',
+    text: 'Had a bad drain clog.called A General in the morning and Carlos arrived in the afternoon.Went right to work with a small snake that didn\'t cut it.Quickly changed attack and brought out a bigger snake that did the job on a tuff clog.Salute to Carlos for a good job!'
   }
 ];
 
@@ -84,10 +86,10 @@ export default function ReviewsSection() {
     <section id="reviews" className="section-padding" style={{ background: 'rgba(11, 19, 37, 0.6)' }}>
       <div className="container">
         <div className="section-header">
-          <span className="section-tag">Verified Google Reviews</span>
-          <h2 className="section-title">4.4 Star Rated By Local Matawan Customers</h2>
+          <span className="section-tag">Authentic Customer Reviews</span>
+          <h2 className="section-title">Verified Ratings From Real Homeowners</h2>
           <p className="section-subtitle">
-            Read authentic Google feedback praising technicians <strong>Alfie, Jay, Tim, Cody, and Carlos</strong> for quick response times, polite communication, and exemplary service.
+            Strictly real Google reviews for A General Plumbing & Sewer Services featuring technicians <strong>Alfie, Jay, Tim, Cody, and Carlos</strong>.
           </p>
         </div>
 
@@ -102,17 +104,17 @@ export default function ReviewsSection() {
               <Star size={18} fill="#fbbf24" stroke="#fbbf24" />
               <Star size={18} fill="#fbbf24" stroke="#fbbf24" style={{ opacity: 0.5 }} />
             </div>
-            <div className="stat-label">Google Rating (9 Reviews)</div>
+            <div className="stat-label">Google Rating</div>
           </div>
 
           <div className="stat-block">
             <div className="stat-big" style={{ color: '#00b4d8' }}>24/7</div>
-            <div className="stat-label">Open 365 Days a Year</div>
+            <div className="stat-label">Mother's Day & Emergency Relief</div>
           </div>
 
           <div className="stat-block">
             <div className="stat-big" style={{ color: '#ff5e00' }}>100%</div>
-            <div className="stat-label">Polite & Clean Work Guarantee</div>
+            <div className="stat-label">Courteous & Clean Work Area</div>
           </div>
 
           <div className="stat-block">
@@ -140,7 +142,7 @@ export default function ReviewsSection() {
         {/* Review Cards Grid */}
         <div className="reviews-grid">
           {filteredReviews.map((rev) => (
-            <div key={rev.id} className="review-card" style={{ border: rev.id <= 2 ? '1px solid var(--border-cyan)' : '1px solid var(--border-light)' }}>
+            <div key={rev.id} className="review-card" style={{ border: '1px solid var(--border-cyan)' }}>
               <div>
                 <div className="review-header">
                   <div>
@@ -165,7 +167,7 @@ export default function ReviewsSection() {
                   "{rev.highlight}"
                 </div>
 
-                <p className="review-text" style={{ fontStyle: 'italic', fontSize: '0.925rem' }}>
+                <p className="review-text" style={{ fontSize: '0.925rem', color: '#e2e8f0', lineHeight: '1.6' }}>
                   "{rev.text}"
                 </p>
 
@@ -174,13 +176,23 @@ export default function ReviewsSection() {
                     Price Assessment: {rev.assessment}
                   </div>
                 )}
+
+                {rev.positiveTags && (
+                  <div style={{ display: 'flex', gap: '0.35rem', flexWrap: 'wrap', marginBottom: '0.75rem' }}>
+                    {rev.positiveTags.map((pt, i) => (
+                      <span key={i} style={{ background: 'rgba(0, 180, 216, 0.1)', border: '1px solid rgba(0, 180, 216, 0.2)', color: '#48cae4', fontSize: '0.725rem', padding: '0.15rem 0.45rem', borderRadius: '4px', fontWeight: 600 }}>
+                        ✓ {pt}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
 
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid var(--border-light)', paddingTop: '0.85rem', marginTop: '0.5rem' }}>
                 <span className="review-employee-badge">
                   <User size={13} /> Tech: <strong>{rev.tech}</strong>
                 </span>
-                <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Service: {rev.service}</span>
+                {rev.service && <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Service: {rev.service}</span>}
               </div>
             </div>
           ))}
@@ -219,8 +231,6 @@ export default function ReviewsSection() {
                     <select className="area-input" style={{ width: '100%' }}>
                       <option value="Alfie">Alfie</option>
                       <option value="Jay & Tim">Jay & Tim</option>
-                      <option value="Jay">Jay</option>
-                      <option value="Tim">Tim</option>
                       <option value="Cody">Cody</option>
                       <option value="Carlos">Carlos</option>
                     </select>
@@ -249,7 +259,7 @@ export default function ReviewsSection() {
               <div style={{ textAlign: 'center', padding: '1rem 0' }}>
                 <CheckCircle size={56} style={{ color: '#10b981', margin: '0 auto 1rem auto' }} />
                 <h3 style={{ fontSize: '1.5rem', color: '#ffffff', marginBottom: '0.5rem' }}>Thank You for Your Feedback!</h3>
-                <p style={{ color: '#cbd5e1', marginBottom: '1.5rem' }}>Your review helps us maintain our 4.4 star standard in Matawan, NJ.</p>
+                <p style={{ color: '#cbd5e1', marginBottom: '1.5rem' }}>Your review helps us maintain our standard in Matawan, NJ.</p>
                 <button onClick={() => { setReviewModalOpen(false); setSubmittedReview(false); }} className="btn btn-secondary">
                   Close Window
                 </button>
